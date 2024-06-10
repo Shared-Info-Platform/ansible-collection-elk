@@ -32,7 +32,7 @@
     status_code: 401
     validate_certs: no
   register: elk_http_result
-  ignore_errors: yes
+  ignore_errors: true
 
 - block:
     - name: Download and extract elasticsearch
@@ -107,7 +107,6 @@
         file: keystore_setup.yml
       when: 
         - elasticsearch_security_enabled
-        - not elasticsearch_use_le_certs
 
     - include_tasks:
         file: prepare_le_certs.yml
