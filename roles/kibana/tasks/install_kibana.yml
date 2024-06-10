@@ -99,6 +99,7 @@
   when: 
     - elasticsearch_https_enabled
     - not elastic_ca_file.stat.exists
+    - not kibana_https_self_signed
 
 - include_tasks: 
     file: enable_kibana_https.yml
