@@ -93,15 +93,27 @@
 
     - include_tasks: 
         file: generate_node_cert.yml
-      when: elasticsearch_security_enabled
+      when: 
+        - elasticsearch_security_enabled
+        - not elasticsearch_use_le_certs
 
     - include_tasks: 
         file: generate_https_cert.yml
-      when: elasticsearch_https_enabled
+      when: 
+        - elasticsearch_https_enabled
+        - not elasticsearch_use_le_certs
 
     - include_tasks: 
         file: keystore_setup.yml
-      when: elasticsearch_security_enabled
+      when: 
+        - elasticsearch_security_enabled
+        - not elasticsearch_use_le_certs
+
+    - include_tasks:
+        file: prepare_le_certs.yml
+      when:
+        - elasticsearch_security_enabled
+        - elasticsearch_use_le_certs
 
   when: 
     - not elasticsearch_dir.stat.exists

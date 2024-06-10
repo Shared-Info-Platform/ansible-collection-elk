@@ -106,8 +106,16 @@ discovery.type: "single-node"
 xpack.security.transport.ssl.enabled: true
 xpack.security.transport.ssl.verification_mode: certificate 
 xpack.security.transport.ssl.client_authentication: required
+
+{% if elasticsearch_use_le_certs %}
+xpack.security.transport.ssl.key: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_key }}
+xpack.security.transport.ssl.certificate: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_fullchain_cert }}
+xpack.security.transport.ssl.certificate_authorities: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_fullchain_cert  }}
+{% else %}
 xpack.security.transport.ssl.keystore.path: {{ elasticsearch_certs_dir }}/{{ elasticsearch_cert_filename }}
 xpack.security.transport.ssl.truststore.path: {{ elasticsearch_certs_dir }}/{{ elasticsearch_cert_filename }}
+{% endif %}
+
 {% else %}
 xpack.security.enabled: false
 xpack.security.transport.ssl.enabled: false
@@ -115,7 +123,15 @@ xpack.security.transport.ssl.enabled: false
 
 {% if elasticsearch_https_enabled %}
 xpack.security.http.ssl.enabled: true
+
+{% if elasticsearch_use_le_certs %}
+xpack.security.http.ssl.key: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_key }}
+xpack.security.http.ssl.certificate: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_fullchain_cert }}
+xpack.security.http.ssl.certificate_authorities: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_fullchain_cert  }}
+{% else %}
 xpack.security.http.ssl.keystore.path: {{ elasticsearch_certs_dir }}/http.p12
+{% endif %}
+
 {% else %}
 xpack.security.http.ssl.enabled: false
 {% endif %}
