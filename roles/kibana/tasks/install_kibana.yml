@@ -89,17 +89,17 @@
   notify:
     - reload systemd
 
-- name: Copy elastic CA
-  ansible.builtin.copy:
-    src: "{{ elasticsearch_local_certs_dir }}/{{ elasticsearch_ca_name }}"
-    dest: "{{ kibana_certs_dir }}/{{ elasticsearch_ca_name }}"
-    owner: "{{ kibana_user }}"
-    group: "{{ kibana_group }}"
-    mode: 0644
-  when: 
-    - elasticsearch_https_enabled
-    - not elastic_ca_file.stat.exists
-    - not kibana_https_self_signed
+# - name: Copy elastic CA
+#   ansible.builtin.copy:
+#     src: "{{ elasticsearch_local_certs_dir }}/{{ elasticsearch_ca_name }}"
+#     dest: "{{ kibana_certs_dir }}/{{ elasticsearch_ca_name }}"
+#     owner: "{{ kibana_user }}"
+#     group: "{{ kibana_group }}"
+#     mode: 0644
+#   when: 
+#     - elasticsearch_https_enabled
+#     - not elastic_ca_file.stat.exists
+#     - not kibana_https_self_signed
 
 - include_tasks: 
     file: enable_kibana_https.yml
