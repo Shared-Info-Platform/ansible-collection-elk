@@ -105,7 +105,7 @@ discovery.type: "single-node"
 {% if elasticsearch_security_enabled %}
 xpack.security.transport.ssl.enabled: true
 xpack.security.transport.ssl.verification_mode: certificate 
-xpack.security.transport.ssl.client_authentication: required
+xpack.security.transport.ssl.client_authentication: optional
 
 {% if elasticsearch_use_le_certs %}
 xpack.security.transport.ssl.key: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_key }}
@@ -124,6 +124,8 @@ xpack.security.transport.ssl.enabled: false
 xpack.security.http.ssl.enabled: true
 
 {% if elasticsearch_use_le_certs %}
+xpack.security.http.ssl.verification_mode: certificate 
+
 xpack.security.http.ssl.key: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_key }}
 xpack.security.http.ssl.certificate: {{ elasticsearch_certs_dir }}/{{ elasticsearch_le_cert }}
 {% else %}
