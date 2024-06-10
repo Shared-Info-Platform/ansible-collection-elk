@@ -7,10 +7,10 @@
     group: "{{ elasticsearch_group }}"
     mode: 0644
 
-- name: Copy Let's encrypt full chain cert in place
+- name: Copy Let's encrypt cert in place
   ansible.builtin.copy:
-    src: "{{ elasticsearch_local_certs_dir }}/{{ elasticsearch_le_fullchain_cert }}"
-    dest: "{{ elasticsearch_certs_dir }}/{{ elasticsearch_le_fullchain_cert }}"
+    src: "{{ elasticsearch_local_certs_dir }}/{{ elasticsearch_le_cert }}"
+    dest: "{{ elasticsearch_certs_dir }}/{{ elasticsearch_le_cert }}"
     owner: "{{ elasticsearch_user }}"
     group: "{{ elasticsearch_group }}"
     mode: 0644
