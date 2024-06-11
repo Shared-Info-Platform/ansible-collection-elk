@@ -101,7 +101,8 @@ elasticsearch.ssl.certificateAuthorities: [ "{{ kibana_certs_dir }}/{{ elasticse
 {% endif %}
 
 # To disregard the validity of SSL certificates, change this setting's value to 'none'.
-#elasticsearch.ssl.verificationMode: full
+# temporary set to certificate
+elasticsearch.ssl.verificationMode: certificate
 
 # =================== System: Logging ===================
 # Set the value of this setting to off to suppress all logging output, or to debug to log everything. Defaults to 'info'
@@ -110,7 +111,7 @@ elasticsearch.ssl.certificateAuthorities: [ "{{ kibana_certs_dir }}/{{ elasticse
 # Enables you to specify a file where Kibana stores log output.
 #logging.appenders.default:
 #  type: file
-#  fileName: /var/logs/kibana.log
+#  fileName: /var/logs/kibana.log:wait
 #  layout:
 #    type: json
 
