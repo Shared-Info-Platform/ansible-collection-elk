@@ -72,8 +72,6 @@ network.publish_host: {{ ansible_hostname|lower }}.{{ elasticsearch_le_base_cn_n
 {% else %}
 network.publish_host: {{ elastic_ip_address }}
 {% endif %}
-
-network.publish_host: {{ elastic_ip_address }}
 #
 # By default Elasticsearch listens for HTTP traffic on the first free port it
 # finds starting at 9200. Set a specific HTTP port here:
