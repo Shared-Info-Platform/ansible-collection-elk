@@ -108,16 +108,16 @@
       when: 
         - elasticsearch_security_enabled
 
-    - include_tasks:
-        file: prepare_le_certs.yml
-      when:
-        - elasticsearch_security_enabled
-        - elasticsearch_use_le_certs
-
   when: 
     - not elasticsearch_dir.stat.exists
     - elk_http_result.status is defined 
     - elk_http_result.status != 401
+
+- include_tasks:
+    file: prepare_le_certs.yml
+  when:
+    - elasticsearch_security_enabled
+    - elasticsearch_use_le_certs
 
 - name: Set vm.max_map_count value
   ansible.posix.sysctl:
