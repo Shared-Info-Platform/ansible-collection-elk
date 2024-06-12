@@ -66,6 +66,13 @@ path.logs: {{ elasticsearch_log_dir }}
 # address here to expose this node on the network:
 #
 network.host: 0.0.0.0
+
+{% if elasticsearch_use_le_certs %}
+network.publish_host: {{ ansible_hostname|lower }}.{{ elasticsearch_le_base_cn_name }}
+{% else %}
+network.publish_host: {{ elastic_ip_address }}
+{% endif %}
+
 network.publish_host: {{ elastic_ip_address }}
 #
 # By default Elasticsearch listens for HTTP traffic on the first free port it

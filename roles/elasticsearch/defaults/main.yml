@@ -14,6 +14,7 @@ elasticsearch_security_enabled: yes
 elasticsearch_use_le_certs: no
 elasticsearch_le_key: privkey.pem
 elasticsearch_le_cert: fullchain.pem
+elasticsearch_le_base_cn_name: log.example.com
 elasticsearch_https_enabled: yes
 elasticsearch_ca_password: c4,p4sSw0rd
 elasticsearch_ca_filename: elastic_ca.p12
