@@ -26,6 +26,7 @@
   when: 
     - not kibana_key_file.stat.exists
     - kibana_https_self_signed
+    - not kibana_use_le_certs
 
 - block:
     - name: Copy kibana https key
@@ -38,6 +39,4 @@
       with_items:
         - key
         - crt
-  when: 
-    - not kibana_key_file.stat.exists
-    - not kibana_https_self_signed
+  when: kibana_use_le_certs
