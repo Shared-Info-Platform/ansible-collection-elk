@@ -13,7 +13,7 @@
 
 - name: wait kibana to be ready
   ansible.builtin.uri:
-    url: "{{ kibana_virtual_proto }}://localhost:5601"
+    url: "{{ kibana_virtual_proto }}://localhost:{{ kibana_port }}"
     status_code: 200
     follow_redirects: safe
     validate_certs: no
