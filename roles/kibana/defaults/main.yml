@@ -19,6 +19,8 @@ kibana_san_names:
 kibana_local_certs_dir: ~/kibana_certs_dir
 kibana_old_space_mb: 1024
 
+#kibana_public_base_url: example.com
+
 kibana_install_mode: http # local
 kibana_local_tar_path: ''
 
