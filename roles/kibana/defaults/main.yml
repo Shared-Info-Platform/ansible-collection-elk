@@ -24,6 +24,8 @@ kibana_old_space_mb: 1024
 kibana_install_mode: http # local
 kibana_local_tar_path: ''
 
+xpack_encryptedSavedObjects_encryptionKey: a932f01e-32f5-47e2-9440-bfeec35c328d
+
 elasticsearch_local_certs_dir: ~/very_secure_dir
 elasticsearch_ca_name: elasticsearch-ca.pem
 elasticsearch_security_enabled: yes
