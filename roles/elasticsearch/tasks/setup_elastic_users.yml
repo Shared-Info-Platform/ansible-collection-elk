@@ -15,7 +15,7 @@
     status_code: 200
     body_format: json
   with_items: "{{ elasticsearch_users }}"
-  no_log: true
+  no_log: false
   run_once: true
 
 - name: Setup extra ELK roles
