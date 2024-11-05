@@ -25,6 +25,7 @@ kibana_install_mode: http # local
 kibana_local_tar_path: ''
 
 xpack_encryptedSavedObjects_encryptionKey: a932f01e-32f5-47e2-9440-bfeec35c328d
+xpack_fleet_agents_enabled: yes
 xpack_fleet_isAirGapped: no
 
 elasticsearch_local_certs_dir: ~/very_secure_dir

@@ -182,6 +182,11 @@ pid.file: {{ kibana_pid_dir }}/kibana.pid
 xpack.encryptedSavedObjects.encryptionKey: {{ xpack_encryptedSavedObjects_encryptionKey }}
 
 # =================== Fleet ==================================
-# To disable any requests / operations that would void in an air gapped environment
-xpack.fleet.isAirGapped: {{ xpack_fleet_isAirGapped }}
+{% if xpack_fleet_agents_enabled %}
+xpack.fleet.agents.enabled: true
+{% endif %}
 
+# To disable any requests / operations that would void in an air gapped environment
+{% if xpack_fleet_isAirGapped %}
+xpack.fleet.isAirGapped: true
+{% endif %}
