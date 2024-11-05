@@ -184,9 +184,14 @@ xpack.encryptedSavedObjects.encryptionKey: {{ xpack_encryptedSavedObjects_encryp
 # =================== Fleet ==================================
 {% if xpack_fleet_agents_enabled %}
 xpack.fleet.agents.enabled: true
-{% endif %}
 
-# To disable any requests / operations that would void in an air gapped environment
 {% if xpack_fleet_isAirGapped %}
 xpack.fleet.isAirGapped: true
+{% else %}
+xpack.fleet.isAirGapped: false
 {% endif %}
+
+{% else %}
+xpack.fleet.agents.enabled: false
+{% endif %}
+
