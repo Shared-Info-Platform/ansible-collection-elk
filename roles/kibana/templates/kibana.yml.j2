@@ -180,3 +180,9 @@ pid.file: {{ kibana_pid_dir }}/kibana.pid
 
 ## for alert rules:
 xpack.encryptedSavedObjects.encryptionKey: {{ xpack_encryptedSavedObjects_encryptionKey }}
+
+# =================== Fleet ==================================
+# To disable any requests / operations that would void in an air gapped environment
+{% if xpack_fleet_isAirGapped %}
+xpack.fleet.isAirGapped: {{ xpack_fleet_isAirGapped }}
+
