@@ -14,7 +14,8 @@ Group={{ kibana_group }}
 
 ExecStart={{ kibana_extract_dir }}/kibana/bin/kibana
 
-StandardOutput=append:{{ kibana_log_dir }}/kibana.log
+# Rolling file configured in kibana config
+# StandardOutput=append:{{ kibana_log_dir }}/kibana.log
 StandardError=append:{{ kibana_log_dir }}/kibana_error.log
 
 KillMode=process

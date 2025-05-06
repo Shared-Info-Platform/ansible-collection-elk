@@ -133,6 +133,32 @@ elasticsearch.ssl.verificationMode: certificate
 #  - name: metrics.ops
 #    level: debug
 
+logging:
+  appenders:
+    console-meta:
+      type: console
+      layout:
+        type: pattern
+        pattern: "[%date] [%level] [%logger] [%meta] %message"
+        highlight: true
+    rolling-file:
+      type: rolling-file
+      fileName: /var/log/kibana/kibana.log
+      policy:
+        type: time-interval
+        interval: 1d
+        modulate: true
+      strategy:
+        type: numeric
+        pattern: '-%i'
+        max: 10
+      layout:
+        type: pattern
+        pattern: "[%date] [%level] [%logger] [%meta] %message"
+  root:
+    appenders: [console-meta, rolling-file]
+    level: info
+
 # =================== System: Other ===================
 # The path where Kibana stores persistent data not saved in Elasticsearch. Defaults to data
 path.data: {{ kibana_data_dir }}
